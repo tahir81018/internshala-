@@ -21,7 +21,6 @@ import UserApplicatiom from "./profile/UserApplicatiom";
 import UserapplicationDetail from "./Applications/DeatilApplicationUser";
 import axios from "axios";
 import { useCookies } from "react-cookie";
-import { baseUrl } from "./constants";
 import { setUser } from "./Feature/Userslice";
 import { ToastContainer } from "react-toastify";
 import Subscriptions from "./Componets/subscriptions/Subscriptions";
