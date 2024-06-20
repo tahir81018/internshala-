@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const port = 5000;
 
 const corsOptions = {
-  origin: "http://localhost:3000",
+  origin: process.env.CLIENT_BASE_URL,
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
