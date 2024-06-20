@@ -16,7 +16,7 @@ function UserApplicatiom() {
     const fetchApplication = async () => {
       try {
         const response = await axios.get(
-          "https://internshipbackend-vwja.onrender.com/api/application"
+          `${process.env.SERVER_BASE_URL}/api/application`
         );
         setApplication(response.data);
       } catch (error) {

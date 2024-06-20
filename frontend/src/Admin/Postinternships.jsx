@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { SERVER_BASE_URL } from "../constants";
 
 function Postinternships() {
   const [title, setTitle] = useState("");
@@ -50,7 +49,7 @@ function Postinternships() {
         AdditionalInfo: additionalInfo,
       };
       axios
-        .post(`${SERVER_BASE_URL}/api/internship`, bodyJosn)
+        .post(`${process.env.SERVER_BASE_URL}/api/internship`, bodyJosn)
         .then((res) => {
           console.log(res.data);
         })

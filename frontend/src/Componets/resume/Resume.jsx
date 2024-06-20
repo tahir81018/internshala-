@@ -97,7 +97,7 @@ const Resume = () => {
 
   const makePayment = async (amount, currency, orderId) => {
     const options = {
-      key: RAZORPAY_KEY_ID,
+      key: process.env.RAZORPAY_KEY_ID,
       amount: amount,
       currency: currency,
       name: "Internshala",
@@ -117,10 +117,14 @@ const Resume = () => {
         formData.append("resumePayload", JSON.stringify(resumePayload));
         formData.append("razorpayResponse", JSON.stringify(response));
         axios
-          .post(`${SERVER_BASE_URL}/api/resume/varification`, formData, {
-            withCredentials: true,
-            headers: { "Content-Type": "multipart/form-data" },
-          })
+          .post(
+            `${process.env.SERVER_BASE_URL}/api/resume/varification`,
+            formData,
+            {
+              withCredentials: true,
+              headers: { "Content-Type": "multipart/form-data" },
+            }
+          )
           .then((res) => {
             toast(res.data.message);
             navigate(0);
@@ -151,7 +155,7 @@ const Resume = () => {
       return;
     }
     axios
-      .post(`${SERVER_BASE_URL}/api/resume/check-out`, {
+      .post(`${process.env.SERVER_BASE_URL}/api/resume/check-out`, {
         amount: otp.amount,
         currency: otp.currency,
       })
@@ -172,7 +176,9 @@ const Resume = () => {
       return;
     }
     axios
-      .get(`${SERVER_BASE_URL}/api/mail/send-otp`, { withCredentials: true })
+      .get(`${process.env.SERVER_BASE_URL}/api/mail/send-otp`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setOtp({ code: res.data.otp, amount: amount, currency: currency });
         toast(res.data.message);
@@ -199,7 +205,7 @@ const Resume = () => {
     formData.append("image", resumePayload.photo);
     formData.append("resumePayload", JSON.stringify(resumePayload));
     axios
-      .post(`${SERVER_BASE_URL}/api/resume/save`, formData, {
+      .post(`${process.env.SERVER_BASE_URL}/api/resume/save`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       })

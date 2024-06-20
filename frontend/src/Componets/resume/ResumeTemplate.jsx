@@ -8,7 +8,6 @@ import {
   Image,
   Tspan,
 } from "@react-pdf/renderer";
-import { SERVER_BASE_URL } from "../../constants";
 
 const styles = StyleSheet.create({
   page: {
@@ -89,13 +88,13 @@ const ResumeTemplate = ({ user }) => {
         <View style={styles.header}>
           <View style={styles.imageContainer}>
             <img
-              src={`${SERVER_BASE_URL}/uploads/${user._id}.jpg`}
+              src={`${process.env.SERVER_BASE_URL}/uploads/${user._id}.jpg`}
               alt="ph"
               className=" w-full h-full"
             />
             <Image
               src={{
-                uri: `${SERVER_BASE_URL}/uploads/${user._id}.jpg`,
+                uri: `${process.env.SERVER_BASE_URL}/uploads/${user._id}.jpg`,
                 method: "GET",
                 headers: { "Cache-Control": "no-cache" },
                 body: "",

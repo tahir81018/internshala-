@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Intern from "../Data/InternshipDatAvl";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import { selectUser } from "../../Feature/Userslice";
 import "./deatil.css";
 import axios from "axios";
-import { SERVER_BASE_URL } from "../../constants";
 import { toast } from "react-toastify";
 
 function InternDeatil() {
@@ -42,7 +39,7 @@ function InternDeatil() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `${SERVER_BASE_URL}/api/internship/${id}`
+        `${process.env.SERVER_BASE_URL}/api/internship/${id}`
       );
       setData(response.data);
 
@@ -67,7 +64,7 @@ function InternDeatil() {
       };
 
       await axios
-        .post(`${SERVER_BASE_URL}/api/application`, bodyJson, {
+        .post(`${process.env.SERVER_BASE_URL}/api/application`, bodyJson, {
           withCredentials: true,
         })
         .then((res) => {

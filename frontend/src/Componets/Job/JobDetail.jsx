@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Jobs from "../Data/JobsDataAvl";
-import { selectUser } from "../../Feature/Userslice";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./job.css";
 import axios from "axios";
-import { baseUrl } from "../../constants";
 
 function JobDetail() {
   const user = useSelector((state) => {
@@ -22,7 +19,9 @@ function JobDetail() {
   const [data, setData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`${baseUrl}/api/job/${id}`);
+      const response = await axios.get(
+        `${process.env.SERVER_BASE_URL}/api/job/${id}`
+      );
       const { company, category } = response.data;
       setCompany(company);
       setCategory(category);
@@ -51,10 +50,7 @@ function JobDetail() {
       };
 
       await axios
-        .post(
-          "https://internshipbackend-vwja.onrender.com/api/application",
-          bodyJson
-        )
+        .post(`${process.env.SERVER_BASE_URL}/api/application`, bodyJson)
         .then((res) => {})
         .catch((err) => {
           alert("error happend");

@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { SERVER_BASE_URL } from "../../constants";
+
 function Job() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
@@ -12,7 +11,9 @@ function Job() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${SERVER_BASE_URL}/api/job`);
+        const response = await axios.get(
+          `${process.env.SERVER_BASE_URL}/api/job`
+        );
         setJobData(response.data);
       } catch (error) {
         console.log(error);

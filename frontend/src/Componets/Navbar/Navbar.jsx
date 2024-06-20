@@ -10,7 +10,6 @@ import { useCookies } from "react-cookie";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
 import axios from "axios";
-import { baseUrl } from "../../constants";
 
 function Navbar() {
   const navigate = useNavigate();
@@ -33,7 +32,7 @@ function Navbar() {
   const handleGoogleLogin = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     axios
-      .post(baseUrl + "/api/auth/google-login", decoded, {
+      .post(`${process.env.SERVER_BASE_URL}/api/auth/google-login`, decoded, {
         withCredentials: true,
       })
       .then((res) => {
@@ -50,7 +49,7 @@ function Navbar() {
     event.preventDefault();
     //handle student login here
     axios
-      .post(`${baseUrl}/api/auth/mobile-login`, formData, {
+      .post(`${process.env.SERVER_BASE_URL}/api/auth/mobile-login`, formData, {
         withCredentials: true,
       })
       .then((res) => {

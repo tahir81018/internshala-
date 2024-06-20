@@ -1,17 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./subscriptions.css";
-import {
-  RAZORPAY_KEY_ID,
-  RAZORPAY_KEY_SECRETE,
-  SERVER_BASE_URL,
-} from "../../constants";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Subscriptions = () => {
-  const [openRazorpay, setOpenRazorpay] = useState(false);
   const [coupons, setCoupons] = useState([]);
   const [appliedCoupon, setAppliedCoupon] = useState({
     code: "",
@@ -43,24 +37,23 @@ const Subscriptions = () => {
 
   const makePayment = async (amount, currency, orderId) => {
     const options = {
-      key: RAZORPAY_KEY_ID, // Enter the Key ID generated from the Dashboard
-      amount: amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+      key: process.env.RAZORPAY_KEY_ID,
+      amount: amount,
       currency: currency,
-      name: "Internshala", //your business name
+      name: "Internshala",
       description: "Test Transaction",
       image: "http://localhost:3000/static/media/logo.90a444595bae5c4e157c.png",
-      order_id: orderId, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-      callback_url: `${SERVER_BASE_URL}/api/subscription/varification`,
+      order_id: orderId,
+      // callback_url: `${SERVER_BASE_URL}/api/subscription/varification`,
       prefill: {
-        //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
-        name: `${user.firstName} ${user.lastName}`, //your customer's name
+        name: `${user.firstName} ${user.lastName}`,
         email: user.email,
-        contact: user.mobile, //Provide the customer's phone number for better conversion rates
+        contact: user.mobile,
       },
       handler: function (response) {
         axios
           .post(
-            `${SERVER_BASE_URL}/api/subscription/varification`,
+            `${process.env.SERVER_BASE_URL}/api/subscription/varification`,
             {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
@@ -93,13 +86,13 @@ const Subscriptions = () => {
   };
 
   const handleOrder = (amount, currency, plan) => {
-    // const date = new Date();
-    // if (date.getHours() !== 10) {
-    //   toast("Our payment system is avalable between 10am-11am");
-    //   return;
-    // }
+    const date = new Date();
+    if (date.getHours() !== 10) {
+      toast("Our payment system is avalable between 10am-11am");
+      return;
+    }
     axios
-      .post(`${SERVER_BASE_URL}/api/subscription/check-out`, {
+      .post(`${process.env.SERVER_BASE_URL}/api/subscription/check-out`, {
         amount: amount,
         currency: currency,
         plan: plan,

@@ -7,10 +7,9 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import { GoogleOAuthProvider } from "@react-oauth/google";
-import { clientId } from "./constants";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <GoogleOAuthProvider clientId={clientId}>
+  <GoogleOAuthProvider clientId={process.env.CLIENT_ID}>
     <React.StrictMode>
       <Provider store={store}>
         <BrowserRouter>

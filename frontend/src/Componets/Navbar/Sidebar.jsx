@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from "react";
-import logo from "../../Assets/logo.png";
-// import "./sidebar.css";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase/firebase";
-import { removeUser } from "../../Feature/Userslice";
-import { googleLogout } from "@react-oauth/google";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Sidebar({ onClose, onLogin, onLogout }) {
   const showLogin = () => {

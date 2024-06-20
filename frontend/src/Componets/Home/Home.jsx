@@ -7,7 +7,6 @@ import "./home.css";
 import Job from "./Job";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { SERVER_BASE_URL } from "../../constants";
 function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [selectedCategory, setSelectedCategory] = useState("Big Brands");
@@ -16,7 +15,9 @@ function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${SERVER_BASE_URL}/api/internship`);
+        const response = await axios.get(
+          `${process.env.SERVER_BASE_URL}/api/internship`
+        );
         setInternshipData(response.data);
       } catch (error) {
         console.log(error);

@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { baseUrl } from "../../constants";
 
 function Register() {
   const [signupData, setSignupData] = useState({
@@ -19,7 +18,7 @@ function Register() {
   const handleGoogleLogin = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     axios
-      .post(baseUrl + "/api/auth/google-login", decoded, {
+      .post(`${process.env.SERVER_BASE_URL}/api/auth/google-login`, decoded, {
         withCredentials: true,
       })
       .then((res) => {
@@ -34,7 +33,7 @@ function Register() {
   const handleSignup = (event) => {
     event.preventDefault();
     axios
-      .post(`${baseUrl}/api/auth/register`, signupData, {
+      .post(`${process.env.SERVER_BASE_URL}/api/auth/register`, signupData, {
         withCredentials: true,
       })
       .then((res) => {

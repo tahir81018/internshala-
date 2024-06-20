@@ -25,8 +25,6 @@ import { baseUrl } from "./constants";
 import { setUser } from "./Feature/Userslice";
 import { ToastContainer } from "react-toastify";
 import Subscriptions from "./Componets/subscriptions/Subscriptions";
-import PaymentSuccess from "./Componets/subscriptions/PaymentSuccess";
-import PaymentFailed from "./Componets/subscriptions/PaymentFailed";
 import Resume from "./Componets/resume/Resume";
 import ResumeView from "./Componets/resume/ResumeView";
 
@@ -71,8 +69,6 @@ function App() {
         <Route path="/detailApplication" element={<DeatilApplication />} />
         <Route path="/applications" element={<ViewAllApplication />} />
         <Route path="/subscriptions" element={<Subscriptions />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-        <Route path="/payment-failed" element={<PaymentFailed />} />
         <Route
           path="/UserapplicationDetail"
           element={<UserapplicationDetail />}

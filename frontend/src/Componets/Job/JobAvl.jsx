@@ -3,7 +3,6 @@ import "./job.css";
 import compLogo from "../../Assets/netflix.png";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import { baseUrl } from "../../constants";
 function JobAvl() {
   const [serachCategory, setSearchCategory] = useState("");
   const [searchLoaction, setSearchLocation] = useState("");
@@ -13,7 +12,9 @@ function JobAvl() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`${baseUrl}/api/job`);
+        const response = await axios.get(
+          `${process.env.SERVER_BASE_URL}/api/job`
+        );
         setJobData(response.data);
       } catch (error) {
         console.log(error);
