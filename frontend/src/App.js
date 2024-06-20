@@ -44,7 +44,7 @@ function App() {
   const fetchAccess = (accessToken) => {
     axios
       .post(
-        `${baseUrl}/api/auth/access`,
+        `${process.env.SERVER_BASE_URL}/api/auth/access`,
         { accessToken },
         { withCredentials: true }
       )
