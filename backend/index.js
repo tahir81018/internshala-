@@ -10,29 +10,17 @@ const port = 5000;
 
 const corsOptions = {
   origin: "https://internshala-clone-zeta.vercel.app",
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  // methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   credentials: true, //access-control-allow-credentials:true
-  optionSuccessStatus: 200,
+  // optionSuccessStatus: 200,
 };
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + "/public"));
-
-// app.use("/", (req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept"
-//   );
-//   console.log('middlewares');
-//   next();
-// });
-
-
 
 app.get("/", (req, res) => {
   res.send({ messsage: "Hello This is My backend" });

@@ -8,12 +8,10 @@ const auth = require("./auth");
 const subscription = require("./subscription");
 const resume = require("./resume");
 const mail = require("./mail");
-const cors = require("cors");
 
 router.get("/", (req, res) => {
   res.send("the is backend");
 });
-router.use(cors());
 router.use("/application", ApplicationRoute);
 router.use("/internship", intern);
 router.use("/job", job);
