@@ -38,19 +38,14 @@ function App() {
   });
 
   useEffect(() => {
-    console.log(cookies.get("access_token"));
-    if (cookies.get("access_token") !== undefined) {
-      fetchAccess(cookies.get("access_token"));
-    }
+    fetchAccess();
   }, [cookies]);
 
-  const fetchAccess = (accessToken) => {
+  const fetchAccess = () => {
     axios
-      .post(
-        `${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/access`,
-        { accessToken },
-        { withCredentials: true }
-      )
+      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/access`, {
+        withCredentials: true,
+      })
       .then((res) => {
         dispatch(setUser(res.data.user));
       })
