@@ -8,13 +8,13 @@ const router = require("./Routes/index");
 const cookieParser = require("cookie-parser");
 const port = 5000;
 
-// const corsOptions = {
-//   origin: "https://internshala-clone-zeta.vercel.app",
-//   credentials: true, //access-control-allow-credentials:true
-//   optionSuccessStatus: 200,
-// };
+const corsOptions = {
+  origin: "https://internshala-clone-zeta.vercel.app",
+  credentials: true, //access-control-allow-credentials:true
+  optionSuccessStatus: 200,
+};
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 app.use(express.json());
@@ -34,7 +34,6 @@ app.get("/", (req, res) => {
   res.send({ messsage: "Hello This is My backend" });
 });
 
-app.use("/api", cors());
 app.use("/api", router);
 
 connect();
