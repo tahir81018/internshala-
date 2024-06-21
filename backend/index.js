@@ -21,11 +21,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + "/public"));
 
-app.use((req, res, next) => {
-  req.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
+// app.use((req, res, next) => {
+//   req.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Origin", "*");
+//   next();
+// });
 
 app.use("/api", router);
 
