@@ -39,7 +39,7 @@ function App() {
 
   useEffect(() => {
     fetchAccess();
-  }, [cookies]);
+  }, []);
 
   const fetchAccess = () => {
     axios
