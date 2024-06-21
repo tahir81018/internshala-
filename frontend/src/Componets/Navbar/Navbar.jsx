@@ -63,7 +63,7 @@ function Navbar() {
       .then((res) => {
         closeLogin();
         toast("Login Success");
-        navigate("/");
+        window.location.href = "/";
       })
       .catch((err) => {
         console.error(err);

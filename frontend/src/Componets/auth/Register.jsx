@@ -46,7 +46,7 @@ function Register() {
       )
       .then((res) => {
         toast(res.data.message);
-        navigate("/");
+        window.location.href = "/";
       })
       .catch((err) => {
         console.error(err);
