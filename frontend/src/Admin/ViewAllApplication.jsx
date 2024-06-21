@@ -9,7 +9,7 @@ function ViewAllApplication() {
     const fetchApplication = async () => {
       try {
         const response = await axios.get(
-          `${process.env.SERVER_BASE_URL}/api/application`
+          `${process.env.REACT_APP_SERVER_BASE_URL}/api/application`
         );
         setApplication(response.data);
       } catch (error) {

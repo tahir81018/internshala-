@@ -9,7 +9,7 @@ function DeatilApplication() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `${process.env.SERVER_BASE_URL}/api/application/${id}`
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/application/${id}`
       );
 
       setData([response.data]);

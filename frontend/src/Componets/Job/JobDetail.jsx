@@ -20,7 +20,7 @@ function JobDetail() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `${process.env.SERVER_BASE_URL}/api/job/${id}`
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/job/${id}`
       );
       const { company, category } = response.data;
       setCompany(company);
@@ -50,7 +50,7 @@ function JobDetail() {
       };
 
       await axios
-        .post(`${process.env.SERVER_BASE_URL}/api/application`, bodyJson)
+        .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/application`, bodyJson)
         .then((res) => {})
         .catch((err) => {
           alert("error happend");

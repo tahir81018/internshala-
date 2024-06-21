@@ -39,7 +39,7 @@ function InternDeatil() {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `${process.env.SERVER_BASE_URL}/api/internship/${id}`
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/internship/${id}`
       );
       setData(response.data);
 
@@ -64,7 +64,7 @@ function InternDeatil() {
       };
 
       await axios
-        .post(`${process.env.SERVER_BASE_URL}/api/application`, bodyJson, {
+        .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/application`, bodyJson, {
           withCredentials: true,
         })
         .then((res) => {

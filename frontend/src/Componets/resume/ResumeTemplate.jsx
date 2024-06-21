@@ -88,13 +88,13 @@ const ResumeTemplate = ({ user }) => {
         <View style={styles.header}>
           <View style={styles.imageContainer}>
             <img
-              src={`${process.env.SERVER_BASE_URL}/uploads/${user._id}.jpg`}
+              src={`${process.env.REACT_APP_SERVER_BASE_URL}/uploads/${user._id}.jpg`}
               alt="ph"
               className=" w-full h-full"
             />
             <Image
               src={{
-                uri: `${process.env.SERVER_BASE_URL}/uploads/${user._id}.jpg`,
+                uri: `${process.env.REACT_APP_SERVER_BASE_URL}/uploads/${user._id}.jpg`,
                 method: "GET",
                 headers: { "Cache-Control": "no-cache" },
                 body: "",

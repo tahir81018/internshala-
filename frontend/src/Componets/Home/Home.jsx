@@ -16,7 +16,7 @@ function Home() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.SERVER_BASE_URL}/api/internship`
+          `${process.env.REACT_APP_SERVER_BASE_URL}/api/internship`
         );
         setInternshipData(response.data);
       } catch (error) {

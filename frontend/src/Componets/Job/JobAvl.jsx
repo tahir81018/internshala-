@@ -13,7 +13,7 @@ function JobAvl() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.SERVER_BASE_URL}/api/job`
+          `${process.env.REACT_APP_SERVER_BASE_URL}/api/job`
         );
         setJobData(response.data);
       } catch (error) {

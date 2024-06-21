@@ -33,7 +33,7 @@ function Register() {
   const handleSignup = (event) => {
     event.preventDefault();
     axios
-      .post(`${process.env.SERVER_BASE_URL}/api/auth/register`, signupData, {
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/register`, signupData, {
         withCredentials: true,
       })
       .then((res) => {

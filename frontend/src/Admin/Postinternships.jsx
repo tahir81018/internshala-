@@ -49,7 +49,7 @@ function Postinternships() {
         AdditionalInfo: additionalInfo,
       };
       axios
-        .post(`${process.env.SERVER_BASE_URL}/api/internship`, bodyJosn)
+        .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/internship`, bodyJosn)
         .then((res) => {
           console.log(res.data);
         })

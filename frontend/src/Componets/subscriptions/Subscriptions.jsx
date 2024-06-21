@@ -44,7 +44,7 @@ const Subscriptions = () => {
       description: "Test Transaction",
       image: "http://localhost:3000/static/media/logo.90a444595bae5c4e157c.png",
       order_id: orderId,
-      // callback_url: `${SERVER_BASE_URL}/api/subscription/varification`,
+      // callback_url: `${REACT_APP_SERVER_BASE_URL}/api/subscription/varification`,
       prefill: {
         name: `${user.firstName} ${user.lastName}`,
         email: user.email,
@@ -53,7 +53,7 @@ const Subscriptions = () => {
       handler: function (response) {
         axios
           .post(
-            `${process.env.SERVER_BASE_URL}/api/subscription/varification`,
+            `${process.env.REACT_APP_SERVER_BASE_URL}/api/subscription/varification`,
             {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,
@@ -92,7 +92,7 @@ const Subscriptions = () => {
       return;
     }
     axios
-      .post(`${process.env.SERVER_BASE_URL}/api/subscription/check-out`, {
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/subscription/check-out`, {
         amount: amount,
         currency: currency,
         plan: plan,

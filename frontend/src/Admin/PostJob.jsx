@@ -49,7 +49,7 @@ function PostJOb() {
         AdditionalInfo: additionalInfo,
       };
       axios
-        .post(`${process.env.SERVER_BASE_URL}/api/job`, bodyJosn)
+        .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/job`, bodyJosn)
         .then((res) => {
           console.log(res.data);
         })

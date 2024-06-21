@@ -17,7 +17,7 @@ function AdminLogin() {
       };
 
       axios
-        .post(`${process.env.SERVER_BASE_URL}/api/admin/adminLogin`, bodyjson)
+        .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/admin/adminLogin`, bodyjson)
         .then((res) => {
           console.log(res, "data is send");
           alert("success");

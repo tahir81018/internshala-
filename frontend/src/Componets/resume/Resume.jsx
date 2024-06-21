@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Modal from "../modal/Modal";
 import { toast } from "react-toastify";
 import axios from "axios";
-import { RAZORPAY_KEY_ID, SERVER_BASE_URL } from "../../constants";
+import { RAZORPAY_KEY_ID, REACT_APP_SERVER_BASE_URL } from "../../constants";
 import ResumeTemplate from "./ResumeTemplate";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import { Link, Outlet, useNavigate } from "react-router-dom";
@@ -118,7 +118,7 @@ const Resume = () => {
         formData.append("razorpayResponse", JSON.stringify(response));
         axios
           .post(
-            `${process.env.SERVER_BASE_URL}/api/resume/varification`,
+            `${process.env.REACT_APP_SERVER_BASE_URL}/api/resume/varification`,
             formData,
             {
               withCredentials: true,
@@ -155,7 +155,7 @@ const Resume = () => {
       return;
     }
     axios
-      .post(`${process.env.SERVER_BASE_URL}/api/resume/check-out`, {
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/resume/check-out`, {
         amount: otp.amount,
         currency: otp.currency,
       })
@@ -176,7 +176,7 @@ const Resume = () => {
       return;
     }
     axios
-      .get(`${process.env.SERVER_BASE_URL}/api/mail/send-otp`, {
+      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/api/mail/send-otp`, {
         withCredentials: true,
       })
       .then((res) => {
@@ -205,7 +205,7 @@ const Resume = () => {
     formData.append("image", resumePayload.photo);
     formData.append("resumePayload", JSON.stringify(resumePayload));
     axios
-      .post(`${process.env.SERVER_BASE_URL}/api/resume/save`, formData, {
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/resume/save`, formData, {
         withCredentials: true,
         headers: { "Content-Type": "multipart/form-data" },
       })

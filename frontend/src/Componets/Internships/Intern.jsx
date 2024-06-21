@@ -24,7 +24,7 @@ function Intern() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${process.env.SERVER_BASE_URL}/api/internship`
+          `${process.env.REACT_APP_SERVER_BASE_URL}/api/internship`
         );
         setInternData(response.data);
         console.log(response.data);
