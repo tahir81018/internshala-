@@ -1,11 +1,10 @@
 const express = require("express");
 const user = require("../Model/User");
 var jwt = require("jsonwebtoken");
-const cors = require("cors");
 
 const router = express.Router();
 
-router.post("/google-login", cors(), async (req, res) => {
+router.post("/google-login", async (req, res) => {
   const { email, given_name, family_name, picture, email_varified } = req.body;
   const googleUser = await user.findOne({ email: email }).exec();
   if (googleUser !== null) {
