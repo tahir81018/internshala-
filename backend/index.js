@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const port = 5000;
 
 const corsOptions = {
-  origin: "https://internshala-clone-zeta.vercel.app/",
+  origin: "https://internshala-clone-zeta.vercel.app",
   credentials: true, //access-control-allow-credentials:true
   optionSuccessStatus: 200,
 };
