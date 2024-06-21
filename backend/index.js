@@ -29,12 +29,11 @@ app.use(express.static(__dirname + "/public"));
 //   );
 //   next();
 // });
-app.use("/api", cors());
-app.use("/api", router);
-
 app.get("/", (req, res) => {
   res.send("Hello This is My backend");
 });
+app.use("/api", cors());
+app.use("/api", router);
 
 connect();
 
