@@ -18,7 +18,7 @@ function Register() {
   const handleGoogleLogin = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     axios
-      .post(`https://internshala-seven.vercel.app/api/auth/google-login`, decoded, {
+      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/google-login`, decoded, {
         withCredentials: true,
       })
       .then((res) => {
