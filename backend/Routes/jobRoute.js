@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const Job = require("../Model/Jobs");
 
+
 router.post("/", async (req, res) => {
   const JobData = new Job({
     title: req.body.title,
