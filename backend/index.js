@@ -32,9 +32,9 @@ app.use(express.static(__dirname + "/public"));
 app.use("/api", cors());
 app.use("/api", router);
 
-// app.get("/", (req, res) => {
-//   res.send("Hello This is My backend");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello This is My backend");
+});
 
 connect();
 
