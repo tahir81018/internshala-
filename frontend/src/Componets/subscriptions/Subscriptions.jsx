@@ -37,7 +37,7 @@ const Subscriptions = () => {
 
   const makePayment = async (amount, currency, orderId) => {
     const options = {
-      key: process.env.RAZORPAY_KEY_ID,
+      key: process.env.REACT_APP_RAZORPAY_KEY_ID,
       amount: amount,
       currency: currency,
       name: "Internshala",
