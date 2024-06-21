@@ -32,12 +32,16 @@ function Navbar() {
   const handleGoogleLogin = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     axios
-      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/google-login`, decoded, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/google-login`,
+        decoded,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         closeLogin();
-        navigate("/");
+        window.location.href("/");
       })
       .catch((err) => {
         console.error(err);
@@ -49,9 +53,13 @@ function Navbar() {
     event.preventDefault();
     //handle student login here
     axios
-      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/mobile-login`, formData, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/mobile-login`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         closeLogin();
         toast("Login Success");
