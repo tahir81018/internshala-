@@ -22,7 +22,7 @@ function Register() {
         withCredentials: true,
       })
       .then((res) => {
-        navigate("/");
+        window.location.href('/')
       })
       .catch((err) => {
         console.error(err);
