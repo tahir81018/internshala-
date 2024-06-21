@@ -9,7 +9,7 @@ router.post("/google-login", async (req, res) => {
   const googleUser = await user.findOne({ email: email }).exec();
   if (googleUser !== null) {
     const token = jwt.sign(googleUser.toObject(), process.env.SECRETE);
-    res.cookie("access_token", token, { sameSite: "none", secure: true });
+    res.cookie("access_token", token, { sameSite: "none", secure: false });
     res.send({ accessToken: token, success: true, message: "Login Success" });
   } else {
     const newUser = new user({
@@ -21,7 +21,7 @@ router.post("/google-login", async (req, res) => {
     });
     const savedUser = await newUser.save();
     const token = jwt.sign(savedUser.toObject(), process.env.SECRETE);
-    res.cookie("access_token", token, { sameSite: "none", secure: true });
+    res.cookie("access_token", token, { sameSite: "none", secure: false });
     res.send({ accessToken: token, success: true, message: "Login Success" });
   }
 });
@@ -33,7 +33,7 @@ router.post("/mobile-login", async (req, res) => {
     .exec();
   if (mobileUser !== null) {
     const token = jwt.sign(mobileUser.toObject(), process.env.SECRETE);
-    res.cookie("access_token", token, { sameSite: "none", secure: true });
+    res.cookie("access_token", token, { sameSite: "none", secure: false });
     res.send({ accessToken: token, success: true, message: "Login Success" });
   } else {
     res
@@ -72,7 +72,7 @@ router.post("/register", async (req, res) => {
   });
   const savedUser = await newUser.save();
   const token = jwt.sign(savedUser.toObject(), process.env.SECRETE);
-  res.cookie("access_token", token, { sameSite: "none", secure: true });
+  res.cookie("access_token", token, { sameSite: "none", secure: false });
   res.send({
     accessToken: token,
     success: true,
@@ -85,7 +85,7 @@ router.post("/access", async (req, res) => {
   const decodedUser = jwt.verify(accessToken, process.env.SECRETE);
   const dbUser = await user.findById(decodedUser._id).exec();
   const newToken = jwt.sign(dbUser.toObject(), process.env.SECRETE);
-  res.cookie("access_token", newToken, { sameSite: "none", secure: true });
+  res.cookie("access_token", newToken, { sameSite: "none", secure: false });
   res.send({ user: dbUser, success: true, message: "Access Granted" });
 });
 
