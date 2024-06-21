@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(__dirname + "/public"));
 
-app.use("/", (req, res, next) => {
+app.get("/", (req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Credentials", "true");
   res.setHeader("Access-Control-Max-Age", "1800");
@@ -35,9 +35,9 @@ app.use("/", (req, res, next) => {
 
 app.use("/api", router);
 
-app.get("/", (req, res) => {
-  res.send("Hello This is My backend");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello This is My backend");
+// });
 
 connect();
 
