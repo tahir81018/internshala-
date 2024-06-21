@@ -66,10 +66,10 @@ function Sidebar({ onClose, onLogin, onLogout }) {
           )}
           <div className=" space-y-3 p-2">
             <p className=" text-left">
-              <Link>Internships</Link>
+              <Link to="/internship">Internships</Link>
             </p>
             <p className=" text-left">
-              <Link>Jobs</Link>
+              <Link to="/Jobs">Jobs</Link>
             </p>
             <p className=" text-left">
               <Link>Contact Us</Link>
@@ -81,13 +81,13 @@ function Sidebar({ onClose, onLogin, onLogout }) {
                 <Link to={"/"}>Home</Link>
               </p>
               <p className=" text-left hover:text-sky-500">
-                <Link>My Applications</Link>
+                <Link to='/applications'>My Applications</Link>
               </p>
               <p className=" text-left hover:text-sky-500">
                 <Link>My Bookmarks</Link>
               </p>
               <p className=" text-left hover:text-sky-500">
-                <Link>Edit Resume</Link>
+                <Link to='/resume'>Edit Resume</Link>
               </p>
               <p className=" text-left hover:text-sky-500">
                 <Link>Edit Preferences</Link>

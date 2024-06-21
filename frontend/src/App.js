@@ -20,18 +20,14 @@ import DeatilApplication from "./Applications/DeatilApplication";
 import UserApplicatiom from "./profile/UserApplicatiom";
 import UserapplicationDetail from "./Applications/DeatilApplicationUser";
 import axios from "axios";
-import { useCookies } from "react-cookie";
 import { setUser } from "./Feature/Userslice";
 import { ToastContainer } from "react-toastify";
 import Subscriptions from "./Componets/subscriptions/Subscriptions";
 import Resume from "./Componets/resume/Resume";
 import ResumeView from "./Componets/resume/ResumeView";
-import Cookies from "universal-cookie";
 
 function App() {
-  // const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
   const dispatch = useDispatch();
-  const cookies = new Cookies(null, { path: "/" });
 
   const user = useSelector((state) => {
     return state.user.user;
