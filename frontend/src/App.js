@@ -26,18 +26,21 @@ import { ToastContainer } from "react-toastify";
 import Subscriptions from "./Componets/subscriptions/Subscriptions";
 import Resume from "./Componets/resume/Resume";
 import ResumeView from "./Componets/resume/ResumeView";
+import Cookies from "universal-cookie";
 
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
+  // const [cookies, setCookie, removeCookie] = useCookies(["access_token"]);
   const dispatch = useDispatch();
+  const cookies = new Cookies(null, { path: "/" });
+
   const user = useSelector((state) => {
     return state.user.user;
   });
 
   useEffect(() => {
-    console.log(cookies.access_token);
-    if (cookies.access_token !== undefined) {
-      fetchAccess(cookies.access_token);
+    console.log(cookies.get("access_token"));
+    if (cookies.get("access_token") !== undefined) {
+      fetchAccess(cookies.get("access_token"));
     }
   }, [cookies]);
 
