@@ -41,7 +41,7 @@ function Navbar() {
       )
       .then((res) => {
         closeLogin();
-        window.location.href("/");
+        window.location.href = "/";
       })
       .catch((err) => {
         console.error(err);

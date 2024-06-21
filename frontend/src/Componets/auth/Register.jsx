@@ -18,11 +18,15 @@ function Register() {
   const handleGoogleLogin = (credentialResponse) => {
     const decoded = jwtDecode(credentialResponse.credential);
     axios
-      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/google-login`, decoded, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/google-login`,
+        decoded,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
-        window.location.href('/')
+        window.location.href = "/";
       })
       .catch((err) => {
         console.error(err);
@@ -33,9 +37,13 @@ function Register() {
   const handleSignup = (event) => {
     event.preventDefault();
     axios
-      .post(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/register`, signupData, {
-        withCredentials: true,
-      })
+      .post(
+        `${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/register`,
+        signupData,
+        {
+          withCredentials: true,
+        }
+      )
       .then((res) => {
         toast(res.data.message);
         navigate("/");
