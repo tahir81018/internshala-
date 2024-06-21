@@ -35,6 +35,7 @@ function App() {
   });
 
   useEffect(() => {
+    console.log(cookies.access_token);
     if (cookies.access_token !== undefined) {
       fetchAccess(cookies.access_token);
     }
