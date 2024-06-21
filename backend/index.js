@@ -30,7 +30,7 @@ app.use(express.static(__dirname + "/public"));
 //   next();
 // });
 app.get("/", (req, res) => {
-  res.send("Hello This is My backend");
+  res.send({ messsage: "Hello This is My backend" });
 });
 app.use("/api", cors());
 app.use("/api", router);
