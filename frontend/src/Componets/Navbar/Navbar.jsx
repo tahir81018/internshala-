@@ -133,7 +133,6 @@ function Navbar() {
         setDivVisibleProfile(false);
         dispatch(removeUser());
         googleLogout();
-        removeCookie("access_token", { sameSite: "none", secure: true });
         window.location.href = "/";
       })
       .catch((err) => {
