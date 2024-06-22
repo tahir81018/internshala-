@@ -90,7 +90,7 @@ router.get("/access", async (req, res) => {
 });
 
 router.get("/logout", async (req, res) => {
-  res.clearCookie("access_token");
+  res.clearCookie("access_token", { sameSite: "none", secure: true });
   res.send({ success: true, message: "Logged Out" });
 });
 
