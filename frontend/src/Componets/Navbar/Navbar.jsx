@@ -133,7 +133,7 @@ function Navbar() {
         setDivVisibleProfile(false);
         dispatch(removeUser());
         googleLogout();
-        navigate("/");
+        window.location.href = "/";
       })
       .catch((err) => {
         console.error(err);
