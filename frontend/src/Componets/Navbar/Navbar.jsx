@@ -127,11 +127,18 @@ function Navbar() {
   };
 
   const logoutFunction = () => {
-    setDivVisibleProfile(false);
-    dispatch(removeUser());
-    googleLogout();
-    removeCookie("access_token");
-    navigate("/");
+    axios
+      .get(`${process.env.REACT_APP_SERVER_BASE_URL}/api/auth/logout`)
+      .then((res) => {
+        setDivVisibleProfile(false);
+        dispatch(removeUser());
+        googleLogout();
+        navigate("/");
+      })
+      .catch((err) => {
+        console.error(err);
+        toast("Unable to log out");
+      });
   };
 
   return (

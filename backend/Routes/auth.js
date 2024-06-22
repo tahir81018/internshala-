@@ -89,4 +89,9 @@ router.get("/access", async (req, res) => {
   res.send({ user: dbUser, success: true, message: "Access Granted" });
 });
 
+router.get("/logout", async (req, res) => {
+  res.clearCookie("access_token");
+  res.send({ success: true, message: "Logged Out" });
+});
+
 module.exports = router;
